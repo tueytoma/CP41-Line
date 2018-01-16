@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <definitions 
+ xmlns="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="ServerService" targetNamespace="http://server.chat/" xmlns:tns="http://server.chat/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:fi="http://java.sun.com/xml/ns/wsit/2006/09/policy/fastinfoset/service" xmlns:tcp="http://java.sun.com/xml/ns/wsit/2006/09/policy/soaptcp/service" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" xmlns:sc="http://schemas.sun.com/2006/03/wss/server" xmlns:wspp="http://java.sun.com/xml/ns/wsit/policy" xmlns:t="http://docs.oasis-open.org/ws-sx/ws-trust/200512" 
+ >
+    <message name="join"/>
+    <message name="joinResponse"/>
+    <message name="broadcast"/>
+    <message name="broadcastResponse"/>
+    <message name="adminLogon"/>
+    <message name="adminLogonResponse"/>
+    <message name="leave"/>
+    <message name="leaveResponse"/>
+    <message name="connectedUsers"/>
+    <message name="connectedUsersResponse"/>
+    <message name="adminLogoff"/>
+    <message name="adminLogoffResponse"/>
+    <message name="privateMessage"/>
+    <message name="privateMessageResponse"/>
+    <message name="listen"/>
+    <message name="listenResponse"/>
+    <message name="setToggleStatus"/>
+    <message name="setToggleStatusResponse"/>
+    <message name="getStatus_isOnline"/>
+    <message name="getStatus_isOnlineResponse"/>
+    <message name="setAllonline"/>
+    <message name="setAllonlineResponse"/>
+    <message name="getUserList"/>
+    <message name="getUserListResponse"/>
+    <message name="setUserList"/>
+    <message name="setUserListResponse"/>
+    <portType name="Server">
+        <operation name="join">
+            <input message="tns:join"/>
+            <output message="tns:joinResponse"/>
+        </operation>
+        <operation name="broadcast">
+            <input message="tns:broadcast"/>
+            <output message="tns:broadcastResponse"/>
+        </operation>
+        <operation name="adminLogon">
+            <input message="tns:adminLogon"/>
+            <output message="tns:adminLogonResponse"/>
+        </operation>
+        <operation name="leave">
+            <input message="tns:leave"/>
+            <output message="tns:leaveResponse"/>
+        </operation>
+        <operation name="connectedUsers">
+            <input message="tns:connectedUsers"/>
+            <output message="tns:connectedUsersResponse"/>
+        </operation>
+        <operation name="adminLogoff">
+            <input message="tns:adminLogoff"/>
+            <output message="tns:adminLogoffResponse"/>
+        </operation>
+        <operation name="privateMessage">
+            <input message="tns:privateMessage"/>
+            <output message="tns:privateMessageResponse"/>
+        </operation>
+        <operation name="listen">
+            <input message="tns:listen"/>
+            <output message="tns:listenResponse"/>
+        </operation>
+        <operation name="setToggleStatus">
+            <input message="tns:setToggleStatus"/>
+            <output message="tns:setToggleStatusResponse"/>
+        </operation>
+        <operation name="getStatus_isOnline">
+            <input message="tns:getStatus_isOnline"/>
+            <output message="tns:getStatus_isOnlineResponse"/>
+        </operation>
+        <operation name="setAllonline">
+            <input message="tns:setAllonline"/>
+            <output message="tns:setAllonlineResponse"/>
+        </operation>
+        <operation name="getUserList">
+            <input message="tns:getUserList"/>
+            <output message="tns:getUserListResponse"/>
+        </operation>
+        <operation name="setUserList">
+            <input message="tns:setUserList"/>
+            <output message="tns:setUserListResponse"/>
+        </operation>
+    </portType>
+    <binding name="ServerPortBinding" type="tns:Server">
+        <operation name="join">
+            <input></input>
+            <output></output>
+        </operation>
+        <operation name="broadcast">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="adminLogon">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="leave">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="connectedUsers">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="adminLogoff">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="privateMessage">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="listen">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="setToggleStatus">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="getStatus_isOnline">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="setAllonline">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="getUserList">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="setUserList">
+            <input/>
+            <output/>
+        </operation>
+    </binding>
+    <service name="ServerService">
+        <port name="ServerPort" binding="tns:ServerPortBinding"/>
+    </service>
+    <wsp:Policy wsu:Id="ServerPortBinding_broadcast_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="ServerPortBinding_broadcast_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="ServerPortBinding_adminLogon_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="ServerPortBinding_adminLogon_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="ServerPortBinding_leave_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="ServerPortBinding_leave_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="ServerPortBinding_connectedUsers_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="ServerPortBinding_connectedUsers_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="ServerPortBinding_adminLogoff_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="ServerPortBinding_adminLogoff_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="ServerPortBinding_privateMessage_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="ServerPortBinding_privateMessage_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="ServerPortBinding_listen_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="ServerPortBinding_listen_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+</definitions>

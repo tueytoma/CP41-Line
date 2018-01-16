@@ -1,0 +1,248 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://server.chat/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://server.chat/">
+
+<xs:element name="adminLogoff" type="tns:adminLogoff"/>
+
+<xs:element name="adminLogoffResponse" type="tns:adminLogoffResponse"/>
+
+<xs:element name="adminLogon" type="tns:adminLogon"/>
+
+<xs:element name="adminLogonResponse" type="tns:adminLogonResponse"/>
+
+<xs:element name="broadcast" type="tns:broadcast"/>
+
+<xs:element name="broadcastResponse" type="tns:broadcastResponse"/>
+
+<xs:element name="connectedUsers" type="tns:connectedUsers"/>
+
+<xs:element name="connectedUsersResponse" type="tns:connectedUsersResponse"/>
+
+<xs:element name="getStatus_isOnline" type="tns:getStatus_isOnline"/>
+
+<xs:element name="getStatus_isOnlineResponse" type="tns:getStatus_isOnlineResponse"/>
+
+<xs:element name="getUserList" type="tns:getUserList"/>
+
+<xs:element name="getUserListResponse" type="tns:getUserListResponse"/>
+
+<xs:element name="join" type="tns:join"/>
+
+<xs:element name="joinResponse" type="tns:joinResponse"/>
+
+<xs:element name="leave" type="tns:leave"/>
+
+<xs:element name="leaveResponse" type="tns:leaveResponse"/>
+
+<xs:element name="listen" type="tns:listen"/>
+
+<xs:element name="listenResponse" type="tns:listenResponse"/>
+
+<xs:element name="privateMessage" type="tns:privateMessage"/>
+
+<xs:element name="privateMessageResponse" type="tns:privateMessageResponse"/>
+
+<xs:element name="setAllonline" type="tns:setAllonline"/>
+
+<xs:element name="setAllonlineResponse" type="tns:setAllonlineResponse"/>
+
+<xs:element name="setToggleStatus" type="tns:setToggleStatus"/>
+
+<xs:element name="setToggleStatusResponse" type="tns:setToggleStatusResponse"/>
+
+<xs:element name="setUserList" type="tns:setUserList"/>
+
+<xs:element name="setUserListResponse" type="tns:setUserListResponse"/>
+
+<xs:complexType name="privateMessage">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:string" minOccurs="0"/>
+<xs:element name="arg2" type="xs:string" minOccurs="0"/>
+<xs:element name="arg3" type="xs:base64Binary" nillable="true" minOccurs="0"/>
+<xs:element name="arg4" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="privateMessageResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="join">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="joinResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="adminLogoff">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="adminLogoffResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="connectedUsers">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="connectedUsersResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:user" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="user">
+<xs:sequence>
+<xs:element name="username" type="xs:string" minOccurs="0"/>
+<xs:element name="messages" type="tns:statusMess" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="isAdmin" type="xs:boolean"/>
+<xs:element name="isAgroup" type="xs:boolean"/>
+<xs:element name="isOnline" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="statusMess">
+<xs:sequence>
+<xs:element name="mess" type="tns:message" minOccurs="0"/>
+<xs:element name="online" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="message">
+<xs:sequence>
+<xs:element name="sender" type="xs:string" minOccurs="0"/>
+<xs:element name="receiver" type="xs:string" minOccurs="0"/>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+<xs:element name="image" type="xs:base64Binary" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="leave">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="leaveResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="listen">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listenResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:statusMess" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="setAllonline">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="setAllonlineResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:statusMess" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getUserList">
+<xs:sequence>
+<xs:element name="arg0" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getUserListResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:user" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="setToggleStatus">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="setToggleStatusResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="setUserList">
+<xs:sequence>
+<xs:element name="arg0" type="tns:user" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="arg1" type="tns:user" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="setUserListResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getStatus_isOnline">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getStatus_isOnlineResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="adminLogon">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:string" minOccurs="0"/>
+<xs:element name="arg2" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="adminLogonResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="broadcast">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:string" minOccurs="0"/>
+<xs:element name="arg2" type="xs:base64Binary" nillable="true" minOccurs="0"/>
+<xs:element name="arg3" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="broadcastResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
